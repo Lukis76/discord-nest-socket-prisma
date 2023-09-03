@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:latest
+    restart: always
+    ports:
+      - '5432:5432'
+    container_name: my-postgres
+    environment:
+      POSTGRES_DB: root
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  # frontend:
+  #   container_name: my-frontend
+  #   image: my-frontend:0.0.1
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+
+  #   volumes:
+  #     - ./:/client
+
+  #   ports:
+  #     - '3000:3000'
+  #   depends_on:
+  #     - postgres
+
+volumes:
+  postgres-data: {}
